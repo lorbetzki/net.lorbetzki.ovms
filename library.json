@@ -1,0 +1,12 @@
+{
+    "id": "{ED24D781-35C1-8AD8-5E12-08283CC604F2}",
+    "name": "OVMS",
+    "author": "Kristian Lorbetzki",
+    "url": "",
+    "compatibility": {
+        "version": "6.0"
+    },
+    "version": "1.0",
+    "build": 0,
+    "date": 0
+}

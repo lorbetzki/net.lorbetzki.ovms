@@ -1,0 +1,12 @@
+{
+    "id": "{542C1EAE-1C38-60F0-08E2-5C2A14DD2709}",
+    "name": "OVMS",
+    "type": 3,
+    "vendor": "ovms",
+    "aliases": ["openvehiclemonitorsystem" ],
+    "parentRequirements": ["{043EA491-0325-4ADD-8FC2-A30C8EEB4D3F}"],
+    "childRequirements": [],
+    "implemented": ["{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}"],
+    "prefix": "OVMS",
+    "url": "https://github.com/lorbetzki/net.lorbetzki.ovms"
+}

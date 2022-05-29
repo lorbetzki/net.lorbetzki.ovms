@@ -1,0 +1,37 @@
+{
+    "elements": [
+        { 
+            "type": "Label",
+            "caption": "You found all inforamtion on the OVMS-Module WEBui under Config -> Server V3 (MQTT) configuration"
+        },
+        { 
+            "type": "Label",
+            "caption": "please type in your Vehicle ID and Username."
+        },
+        { 
+            "type": "ValidationTextBox", 
+            "name": "VehicleID", 
+            "caption": "Vehicle ID" 
+        },
+        { 
+            "type": "ValidationTextBox", 
+            "name": "UserName", 
+            "caption": "Username" 
+        },
+        { 
+            "type": "Label",
+            "caption": "optional type in your Topic Prefix."
+        },
+        { 
+            "type": "ValidationTextBox", 
+            "name": "TopicPrefix",
+            "caption": "Topic Prefix (optional)" 
+        }
+        
+    ],
+    "actions": [
+     ],
+    "status": [
+       
+    ]
+}
