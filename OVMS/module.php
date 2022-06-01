@@ -18,7 +18,6 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 
 			$this->RegisterPropertyString('TopicPrefix', '');
 			$this->RegisterAttributeString("MQTTTopic", "");
-			$this->RegisterPropertyBoolean("NotifyMessages", "false");
 
 			$this->RegisterProfileBooleanEx('OVMS_yesno', '', '', '', [
 				[false, 'no',  '', 0xFF0000],

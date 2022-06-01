@@ -26,11 +26,6 @@
             "type": "ValidationTextBox", 
             "name": "TopicPrefix",
             "caption": "Topic Prefix (optional)" 
-        },
-        { 
-            "type": "CheckBox", 
-            "name": "NotifyMessages",
-            "caption": "enable Notify Messages (optional)" 
         }
     ],
     "actions": [
