@@ -110,13 +110,13 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 						break;
 					}
 					$DBFound = "yes";
-					$this->SendDebug("Datapoint found in Database","DP".$Topic." - ".$topicMetric, 0);
+					$this->SendDebug("Datapoint found in Database","DP".$deviceTopic." - ".$topicMetric, 0);
 				}
 			}
 
 				if ($DBFound === "no")
 				{
-					$this->SendDebug("Datapoint not found in Database","DP".$Topic." - ".$topicMetric, 0);
+					$this->SendDebug("Datapoint not found in Database","DP".$deviceTopic." - ".$topicMetric, 0);
 					$DPDescription = $topicMetric;
 					$DPProfile = "";
 					$DPDataType = 3;
