@@ -171,7 +171,7 @@ $DP = array(
     array('metric/v/p/direction','GPS direction', 'FLOAT', ''),
     array('metric/v/p/gpshdop','GPS horizontal dilution of precision (smaller=better)', 'FLOAT', ''),
     array('metric/v/p/gpslock','has GPS satellite lock', 'BOOL', 'OVMS_yesno'),
-    array('metric/v/p/gpsmode','N/A/D/E (None/Autonomous/Differential/Estimated)', 'STRING', ''),
+    array('metric/v/p/gpsmode','GPS mode N/A/D/E (None/Autonomous/Differential/Estimated)', 'STRING', ''),
     array('metric/v/p/gpssq','GPS signal quality [%] (50 good, >80 excellent)', 'FLOAT', 'OVMS_LEVEL'),
     array('metric/v/p/gpsspeed','GPS speed over ground', 'FLOAT', '~WindSpeed.kmh'),
     array('metric/v/p/gpstime','Time (UTC) of GPS coordinates [Seconds]', 'INT', '~UnixTimestampTime'),
