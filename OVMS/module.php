@@ -20,8 +20,8 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			$this->RegisterAttributeString("MQTTTopic", "");
 
 			$this->RegisterProfileBooleanEx('OVMS_yesno', '', '', '', [
-				[false, 'no',  '', 0xFF0000],
-				[true, 'yes',  '', 0x00FF00]
+				[false, $this->Translate('no'),  '', 0xFF0000],
+				[true, $this->Translate('yes'),  '', 0x00FF00]
 			]);
 			
 			$this->RegisterProfileInteger('OVMS_dBm', '', '', ' dBm', 0, 0, 0);
@@ -30,6 +30,32 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			$this->RegisterProfileFloat("OVMS_AH", "", "", " Ah", 0, 0, 0, 0);
 			$this->RegisterProfileFloat('OVMS_KM', '', '', ' km', 0, 0, 0, 0);
 			$this->RegisterProfileFloat('OVMS_LEVEL', '', '', ' %', 0, 0, 0, 0);
+
+			$this->RegisterProfileIntegerEx("OVMS_Alarm", "", "", "", [
+				['0', $this->Translate('normal'),  '', 0xFFFF00],
+				['1', $this->Translate('warning'),  '', 0x00FF00],
+				['2', $this->Translate('alarm'),  '', 0x00FF00]
+			], 0, 0);
+
+			$this->RegisterProfileIntegerEx("OVMS_LoadState", "", "", "", [
+				['0', $this->Translate('charging'),  '', 0xFFFF00],
+				['1', $this->Translate('topoff'),  '', 0x00FF00],
+				['2', $this->Translate('done'),  '', 0x00FF00],
+				['3', $this->Translate('prepare'),  '', 0x00FF00],
+				['4', $this->Translate('timerwait'),  '', 0x00FF00],
+				['5', $this->Translate('heating'),  '', 0x00FF00],
+				['6', $this->Translate('stopped'),  '', 0x00FF00]
+			], 0, 0);
+
+			$this->RegisterProfileIntegerEx("OVMS_LoadSubState", "", "", "", [
+				['0', $this->Translate('scheduledstop'),  '', 0xFFFF00],
+				['1', $this->Translate('scheduledstart'),  '', 0x00FF00],
+				['2', $this->Translate('onrequest'),  '', 0x00FF00],
+				['3', $this->Translate('timerwait'),  '', 0x00FF00],
+				['4', $this->Translate('powerwait'),  '', 0x00FF00],
+				['5', $this->Translate('stopped'),  '', 0x00FF00],
+				['6', $this->Translate('interrupted'),  '', 0x00FF00]
+			], 0, 0);
 	}
 
 		public function Destroy()
@@ -128,6 +154,60 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 				}
 				
 				$val = $this->CheckPayloadDataType($data['Payload']);
+
+				// Convert String to integer for profile
+				if ($IdentName == "metric_v_c_state"){ 
+					switch ($val)
+					{
+						case "charging":
+							$val = 0;
+						break;
+						case "topoff":
+							$val = 1;
+						break;
+						case "done":
+							$val = 2;
+						break;
+						case "prepare":
+							$val = 3;
+						break;
+						case "timerwait":
+							$val = 4;
+						break;
+						case "heating":
+							$val = 5;
+						break;
+						case "stopped":
+							$val = 6;
+						break;
+					}				
+				}	
+				if ($IdentName == "metric_v_c_substate"){ 
+					switch ($val)
+					{
+						case "scheduledstop":
+							$val = 0;
+						break;
+						case "scheduledstart":
+							$val = 1;
+						break;
+						case "onrequest":
+							$val = 2;
+						break;
+						case "timerwait":
+							$val = 3;
+						break;
+						case "powerwait":
+							$val = 4;
+						break;
+						case "stopped":
+							$val = 5;
+						break;
+						case "interrupted":
+							$val = 6;
+						break;
+					}				
+				}	
 				$this->SetValue($IdentName, $val);
 				unset($DataPoint);
 		}		
