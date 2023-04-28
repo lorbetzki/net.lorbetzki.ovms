@@ -102,7 +102,7 @@ $DP = array(
     array('metric/v/c/time','Duration of running charge', 'FLOAT', ''),
     array('metric/v/c/timermode','timer enabled', 'BOOL', 'OVMS_yesno'),
     array('metric/v/c/timerstart','Time timer is due to start, seconds since midnight UTC', 'INT', '~UnixTimestampTime'),
-    array('metric/v/c/type','undefined, type1, type2, chademo, roadster, teslaus, supercharger, ccs', 'STRING', ''),
+    array('metric/v/c/type','Charging cable type', 'INT', 'OVMS_CableType'),
     array('metric/v/c/voltage','Momentary charger supply voltage', 'FLOAT', '~Volt'),
     array('metric/v/d/cp','Charge port open', 'BOOL', 'OVMS_yesno'),
     array('metric/v/d/fl','Front left door open', 'BOOL', 'OVMS_yesno'),

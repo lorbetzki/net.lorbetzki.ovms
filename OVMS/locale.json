@@ -210,7 +210,16 @@
                 "scheduledstart": "planmäßiger start",
                 "onrequest": "bei Anforderung",
                 "powerwait": "wartet auf Betriebsspannung",
-                "interrupted": "unterbrochen" 
+                "interrupted": "unterbrochen",
+                "Charging cable type":"Typ des Ladekabels",
+                "undefined":"unbekannt",
+                "type1":"Type 1",
+                "type2":"Type 2",
+                "chademo":"Chademo",
+                "roadster":"Roadster",
+                "teslaus":"Tesla US",
+                "supercharger":"Supercharger",
+                "ccs":"CCS"
         }
     }
 }

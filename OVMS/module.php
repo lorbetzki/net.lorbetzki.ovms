@@ -56,6 +56,17 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 				['5', $this->Translate('stopped'),  '', 0x00FF00],
 				['6', $this->Translate('interrupted'),  '', 0x00FF00]
 			], 0, 0);
+
+			$this->RegisterProfileIntegerEx("OVMS_CableType", "", "", "", [
+				['0', $this->Translate('undefined'),  '', 0xFFFF00],
+				['1', $this->Translate('type1'),  '', 0x00FF00],
+				['2', $this->Translate('type2'),  '', 0x00FF00],
+				['3', $this->Translate('chademo'),  '', 0x00FF00],
+				['4', $this->Translate('roadster'),  '', 0x00FF00],
+				['5', $this->Translate('teslaus'),  '', 0x00FF00],
+				['6', $this->Translate('supercharger'),  '', 0x00FF00],
+				['7', $this->Translate('ccs'),  '', 0x00FF00]
+			], 0, 0);
 	}
 
 		public function Destroy()
@@ -205,6 +216,35 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 						break;
 						case "interrupted":
 							$val = 6;
+						break;
+					}				
+				}
+				if ($IdentName == "metric_v_c_type"){ 
+					switch ($val)
+					{
+						case "undefined":
+							$val = 0;
+						break;
+						case "type1":
+							$val = 1;
+						break;
+						case "type2":
+							$val = 2;
+						break;
+						case "chademo":
+							$val = 3;
+						break;
+						case "roadster":
+							$val = 4;
+						break;
+						case "teslaus":
+							$val = 5;
+						break;
+						case "supercharger":
+							$val = 6;
+						break;
+						case "ccs":
+							$val = 7;
 						break;
 					}				
 				}	
