@@ -19,6 +19,8 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			$this->RegisterPropertyString('TopicPrefix', '');
 			$this->RegisterAttributeString("MQTTTopic", "");
 
+			$this->RegisterPropertyBoolean('WriteNotinDB', 'false');
+
 			$this->RegisterProfileBooleanEx('OVMS_yesno', '', '', '', [
 				[false, $this->Translate('no'),  '', 0xFF0000],
 				[true, $this->Translate('yes'),  '', 0x00FF00]
@@ -247,8 +249,13 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 							$val = 7;
 						break;
 					}				
-				}	
-				$this->SetValue($IdentName, $val);
+				}
+
+				//write data if values are in DB or user want to write all data
+				if (($this->ReadPropertyBoolean('WriteNotinDB')) OR ($DBFound === "yes"))
+				{
+					$this->SetValue($IdentName, $val);
+				}
 				unset($DataPoint);
 		}		
 

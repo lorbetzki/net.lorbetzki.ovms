@@ -2,7 +2,7 @@
     "elements": [
         { 
             "type": "Label",
-            "caption": "You found all inforamtion on the OVMS-Module WEBui under Config -> Server V3 (MQTT) configuration"
+            "caption": "You found all informations on the OVMS-Module WEBui under Config -> Server V3 (MQTT) configuration"
         },
         { 
             "type": "Label",
@@ -26,6 +26,11 @@
             "type": "ValidationTextBox", 
             "name": "TopicPrefix",
             "caption": "Topic Prefix (optional)" 
+        },
+        { 
+            "type": "CheckBox", 
+            "name": "WriteNotinDB", 
+            "caption": "create and write unknown variables"       
         }
     ],
     "actions": [

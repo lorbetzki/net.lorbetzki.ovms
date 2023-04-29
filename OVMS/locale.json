@@ -219,7 +219,11 @@
                 "roadster":"Roadster",
                 "teslaus":"Tesla US",
                 "supercharger":"Supercharger",
-                "ccs":"CCS"
+                "ccs":"CCS",
+                "please type in your Vehicle ID and Username.":"bitte geben Sie Ihre Vehicle ID und Ihren Benutzernamen ein.",
+                "Username":"Benutzername",
+                "optional type in your Topic Prefix.":"optional können Sie hier Ihre verwendete Prefix eintragen",
+                "create and write unknown variables/values": "erstelle und schreibe unbekannte Variable/Werte"
         }
     }
 }

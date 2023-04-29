@@ -99,7 +99,7 @@ $DP = array(
     array('metric/v/c/state','charging status', 'INT', 'OVMS_LoadState'),
     array('metric/v/c/substate','charging substatus', 'INT', 'OVMS_LoadSubState'),
     array('metric/v/c/temp','Charger temperature', 'FLOAT', '~Temperature'),
-    array('metric/v/c/time','Duration of running charge', 'FLOAT', ''),
+    array('metric/v/c/time','Duration of running charge', 'INT', '~UnixTimestampTime'),
     array('metric/v/c/timermode','timer enabled', 'BOOL', 'OVMS_yesno'),
     array('metric/v/c/timerstart','Time timer is due to start, seconds since midnight UTC', 'INT', '~UnixTimestampTime'),
     array('metric/v/c/type','Charging cable type', 'INT', 'OVMS_CableType'),
