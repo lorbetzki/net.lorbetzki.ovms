@@ -2,16 +2,20 @@
     "elements": [
         { 
             "type": "Label",
-            "caption": "You found all informations on the OVMS-Module WEBui under Config -> Server V3 (MQTT) configuration"
+            "caption": "You found all informations on the OVMS-Hardware WebUI under Config"
         },
         { 
             "type": "Label",
-            "caption": "please type in your Vehicle ID and Username."
+            "caption": "please type in your Vehicle ID, you found the ID on the WebUI of the OVMS-Hardware in Config -> Vehicle."
         },
         { 
             "type": "ValidationTextBox", 
             "name": "VehicleID", 
             "caption": "Vehicle ID" 
+        },
+        { 
+            "type": "Label",
+            "caption": "please type in your Username, you found it on the WebUI of the OVMS-Hardware in Config -> Server V3 (MQTT)."
         },
         { 
             "type": "ValidationTextBox", 
@@ -20,7 +24,7 @@
         },
         { 
             "type": "Label",
-            "caption": "optional type in your Topic Prefix."
+            "caption": "optional type in your Topic Prefix, you found it on the WebUI of the OVMS-Hardware in Config -> Server V3 (MQTT)."
         },
         { 
             "type": "ValidationTextBox", 
@@ -30,7 +34,7 @@
         { 
             "type": "CheckBox", 
             "name": "WriteNotinDB", 
-            "caption": "create and write unknown variables"       
+            "caption": "create and write unknown variables/values"       
         }
     ],
     "actions": [
