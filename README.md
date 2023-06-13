@@ -11,7 +11,7 @@
 6. [WebFront](#6-webfront)
 
 ### 1. Funktionsumfang
-OVMS - open vehilce monitoring system - ist ein quelloffenes Fahrzeug-Fernüberwachungs-, Diagnose- und Steuerungssystem, ein Symcon-Modul zur Protokollierung, Überwachung und Steuerung Ihres Fahrzeugs. Dieses Modul nutzt die V.3 API = MQTT, wenn Ihr OVMS Modul nur die V2 API beherrscht, benötigen Sie stattdessen das Modul "OVMS native"
+OVMS - open vehicle monitoring system - ist ein quelloffenes Fahrzeug-Fernüberwachungs-, Diagnose- und Steuerungssystem, ein Symcon-Modul zur Protokollierung, Überwachung und Steuerung Ihres Fahrzeugs. Dieses Modul nutzt die V.3 API = MQTT, wenn Ihr OVMS Modul nur die V2 API beherrscht, benötigen Sie stattdessen das Modul "OVMS native"
 
 ### 2. Voraussetzungen
 
