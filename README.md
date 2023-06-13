@@ -17,6 +17,13 @@ OVMS - open vehicle monitoring system - ist ein quelloffenes Fahrzeug-Fernüberw
 
 - IP-Symcon ab Version 6.3
 
+- ein OVMS Modul für das Fahrzeug nebst passender OBD Verbindung und Firmware. Weitere Informationen gibt es hier: https://www.openvehicles.com/ 
+
+Im OVMS Modul muss:
+unter config → vehicle eine Vehicle ID eingetragen sein.
+
+![grafik](https://github.com/net.lorbetzki.ovms/docs/mqtt.png)
+
 ### 3. Software-Installation
 
 * Über den Module Store das 'OVMS'-Modul installieren.
@@ -26,6 +33,8 @@ OVMS - open vehicle monitoring system - ist ein quelloffenes Fahrzeug-Fernüberw
 
  Unter 'Instanz hinzufügen' kann das 'OVMS'-Modul mithilfe des Schnellfilters gefunden werden.  
 	- Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
+
+Man kann OVMS zudem mitteilen, nicht alle Daten zu senden. Dazu lest euch bitte hier ein :https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/docs/source/userguide/components.rst
 
 __Konfigurationsseite__:
 
