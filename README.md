@@ -9,6 +9,7 @@
 4. [Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
 5. [Statusvariablen und Profile](#5-statusvariablen-und-profile)
 6. [WebFront](#6-webfront)
+7. [Befehlsreferenz](#7-befehlsreferenz)
 
 ### 1. Funktionsumfang
 OVMS - open vehicle monitoring system - ist ein quelloffenes Fahrzeug-Fernüberwachungs-, Diagnose- und Steuerungssystem, ein Symcon-Modul zur Protokollierung, Überwachung und Steuerung Ihres Fahrzeugs. Dieses Modul nutzt die V.3 API = MQTT, wenn Ihr OVMS Modul nur die V2 API beherrscht, benötigen Sie stattdessen das Modul "OVMS native"
@@ -78,4 +79,8 @@ Name                    | Typ
 Name                          							| Typ     | Beschreibung
 --------------------------------------------------------| ------- | ------------
 
+### 7. Befehlsreferenz
 
+`OVMS_requestReloadData(int $InstanceID);`
+
+sendet eine Anforderung an das OVMS Hardwaremodul, das alle MQTT Daten erneut versenden soll.
