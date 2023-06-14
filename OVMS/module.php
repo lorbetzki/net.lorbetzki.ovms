@@ -136,7 +136,7 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			if($data['DataID'] == '{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}')
 			{
 				// include Datapoints to match and create only variables we received from the car
-				$this->CheckDB($data);
+				$this->CheckDB($data);				
 			}							
 			
 		}
@@ -291,14 +291,19 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 					}				
 				}
 
-				// if we receive the responseAnswer, set button to green
-				if (strstr($IdentName, '_response_RequestReloadData'))
+				
+				// if we receive the responseAnswer, create a log entry
+				// compare IdentName with Acknowledgemessage
+				$replTopic = str_replace(array("/",".","-",","),"_",$deviceTopic);				
+
+				$RecAck = $replTopic.'client_'.$UserName.'_command_';
+
+				if (strstr($IdentName, $RecAck))
 				{ 
-					$this->LogMessage($this->Translate('RequestReloadData(): the OVMS Module received our request.'),KL_MESSAGE);
-					$this->SendDebug("RequestReloadData()","receive Answer: ".$IdentName, 0);
-
+					$this->LogMessage($this->Translate('sendCmd(): the OVMS Module received our request.'),KL_MESSAGE);
+					$this->SendDebug("sendCmd()","receive Answer: ".$IdentName, 0);
 				}
-
+				
 				//write data if values are in DB or user want to write all data
 				if (($this->ReadPropertyBoolean('WriteNotinDB')) OR ($DBFound === "yes"))
 				{
@@ -326,19 +331,25 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 		public function requestReloadData()
 		{
 			$Payload="server v3 update all";
+			$this->sendCmd($Payload);	
+		}
+		
+		public function sendCmd($Payload)
+		{	
+			
+			$cmdstring = str_replace(" ","_",$Payload);
 			$UserName = $this->ReadPropertyString('UserName');
-
+			$deviceTopic = $this->ReadAttributeString("MQTTTopic");
+			
 			if (empty($UserName))
 			{
-				$this->LogMessage($this->Translate('RequestReloadData(): to use this function, you need to type in a username'),KL_ERROR);
+				$this->LogMessage($this->Translate('sendCmd(): to use this function, you need to type in a username'),KL_ERROR);
 				exit(1);
 			}
 
-			$GenTopic = $this->ReadAttributeString("MQTTTopic");
-			$Topic = $GenTopic.'client/'.$UserName.'/command/RequestReloadData';
-
-			$this->SendDebug(__FUNCTION__,"send topic: ".$Topic, 0);
-			$this->LogMessage($this->Translate('RequestReloadData(): send Payload '),KL_MESSAGE);
+			$Topic = $deviceTopic.'client/'.$UserName.'/command/'.$cmdstring;
+			$this->SendDebug(__FUNCTION__,"send topic: ".$Topic." and Payload ".$Payload, 0);
+			$this->LogMessage($this->Translate('sendCmd(): send Payload').' "'.$Payload.'"',KL_MESSAGE);
 
 			$this->sendMQTT($Topic, $Payload);	
 		}

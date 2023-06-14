@@ -84,3 +84,8 @@ Name                          							| Typ     | Beschreibung
 `OVMS_requestReloadData(int $InstanceID);`
 
 sendet eine Anforderung an das OVMS Hardwaremodul, das alle MQTT Daten erneut versenden soll.
+
+`OVMS_sendCmd(int $InstanceID, string $Payload);`
+
+sendet beliebige Daten an das OVMS Hardwaremodul, `OVMS_sendCmd(12345, "server v3 update all");` senden "server v3 update all" an das OVMS Modul welches gleich alle Daten erneut senden wird. Im Prinzip kann der Payload das enthalten, was man in der OVMS Shell auch eingeben kan. Bspw. `OVMS_sendCmd(12345, "climatecontrol on");` im die Vorklimatisierung einzuschalten (sofern das Fahrzeug das unterstützt).
+
