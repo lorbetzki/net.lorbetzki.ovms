@@ -201,12 +201,12 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 					$DPProfile = "";
 					$DPDataType = 3;
 				}
-
+				/*
 				if (!@$this->GetIDForIdent(''.$IdentName.''))
 				{
 					$this->MaintainVariable($IdentName, $this->Translate("$DPDescription"), $DPDataType, "$DPProfile", 0, true);
 				}
-				
+				*/
 				$val = $this->CheckPayloadDataType($data['Payload']);
 
 				// Convert String to integer for profile
@@ -289,25 +289,31 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 						case "ccs":
 							$val = 7;
 						break;
-					}				
+					}
 				}
 
 				
 				// if we receive the responseAnswer, create a log entry
 				// compare IdentName with Acknowledgemessage
-				$replTopic = str_replace(array("/",".","-",","),"_",$deviceTopic);				
-
-				$RecAck = $replTopic.'client_'.$UserName.'_command_';
+				
+				$RecAckTopic = 'client/'.$UserName.'/response/';
+				$RecAck = str_replace(array("/",".","-",","),"_",$RecAckTopic);
 
 				if (strstr($IdentName, $RecAck))
-				{ 
-					$this->LogMessage($this->Translate('sendCmd(): the OVMS Module received our request.'),KL_MESSAGE);
-					$this->SendDebug("sendCmd()","receive Answer: ".$IdentName, 0);
+				{
+					$this->LogMessage($this->Translate('Receive answer: the OVMS Module received our request.'),KL_MESSAGE);
+					$this->SendDebug("Receive answer:","from IDENT ".$IdentName, 0);
 				}
 				
 				//write data if values are in DB or user want to write all data
 				if (($this->ReadPropertyBoolean('WriteNotinDB')) OR ($DBFound === "yes"))
 				{
+					if (!@$this->GetIDForIdent(''.$IdentName.''))
+					{
+						$this->MaintainVariable($IdentName, $this->Translate("$DPDescription"), $DPDataType, "$DPProfile", 0, true);
+						$this->SendDebug("MaintainVariable:","Create Variable with IDENT ".$IdentName, 0);
+
+					}
 					$this->SetValue($IdentName, $val);
 				}
 				unset($DataPoint);
