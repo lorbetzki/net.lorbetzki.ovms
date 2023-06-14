@@ -160,7 +160,8 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			
 			$deviceTopic = $this->ReadAttributeString("MQTTTopic");
 			$topicMetric = str_replace($deviceTopic, "", $data['Topic']);
-			
+			$UserName = $this->ReadPropertyString('UserName');
+
 			$this->SendDebug("received Data",$data['Topic'], 0);
 
 			$IdentName = str_replace(array("/",".","-",","),"_",$topicMetric);				
