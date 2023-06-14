@@ -225,7 +225,12 @@
                 "please type in your Username, you found it on the WebUI of the OVMS-Hardware in Config -> Server V3 (MQTT).":"Bitte geben Sie Ihren Benutzernamen an. Diese befindet sich im WebUI der OVMS-Hardware unter Config -> Server V3 (MQTT).",
                 "optional type in your Topic Prefix, you found it on the WebUI of the OVMS-Hardware in Config -> Server V3 (MQTT).":"optional können Sie hier Ihre verwendete Prefix eintragen. Diese befindet sich im WebUI der OVMS-Hardware unter Config -> Server V3 (MQTT).",
                 "create and write unknown variables/values": "erstelle und schreibe unbekannte Variable/Werte",
-                "You found all informations on the OVMS-Hardware WebUI under Config":"Alle Informationen befinden sich in der WebUI auf der OVMS-Hardware unter Config"
+                "You found all informations on the OVMS-Hardware WebUI under Config":"Alle Informationen befinden sich in der WebUI auf der OVMS-Hardware unter Config",
+                "RequestReloadData(): the OVMS Module received our request.": "RequestReloadData(): das OVMS Modul hat unsere Anfrage erhalten.",
+                "RequestReloadData(): send Payload ": "RequestReloadData(): sende Payload ",
+                "to activate the Button, you need to type in the user name.": "um den Button zu aktivieren, muss ein Benutzername eingetragen sein.",
+                "Request Data": "Daten anfordern",
+                "RequestReloadData(): to use this function, you need to type in a username": "RequestReloadData(): um diese Funktion nutzen zu können, wird ein Benutzername benötigt"
         }
     }
 }

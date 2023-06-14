@@ -19,10 +19,16 @@ OVMS - open vehicle monitoring system - ist ein quelloffenes Fahrzeug-Fernüberw
 
 - ein OVMS Modul für das Fahrzeug nebst passender OBD Verbindung und Firmware. Weitere Informationen gibt es hier: https://www.openvehicles.com/ 
 
-Im OVMS Modul muss:
-unter config → vehicle eine Vehicle ID eingetragen sein.
+- Im OVMS Modul muss: unter config → vehicle eine Vehicle ID eingetragen sein.
 
-![grafik](https://github.com/net.lorbetzki.ovms/docs/mqtt.png)
+ ![grafik](docs/vehicle.png?raw=true)
+
+- unter config → Server V3 (MQTT) konfiguriert sein.
+
+ ![grafik](docs/mqtt.png?raw=true)
+
+Dort gebt ihr als Server die IP oder den Hostnamen des Symconservers an, zudem muss der Username und das Passwort eingeben werden, welches wir nachher im MQTT Servers von Symcon benötigen.
+
 
 ### 3. Software-Installation
 
@@ -33,6 +39,16 @@ unter config → vehicle eine Vehicle ID eingetragen sein.
 
  Unter 'Instanz hinzufügen' kann das 'OVMS'-Modul mithilfe des Schnellfilters gefunden werden.  
 	- Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
+
+Vehicle ID: die Vehicle ID aus dem OVMS Modul hier eintragen
+
+Username: den Benutzername aus config - Server V3 (MQTT) hier eintragen
+
+Optional:
+Topic Prefix: sollte man eine andere als die Standardprefix nutzen, kann diese hier eingetragen werden.
+
+![grafik](docs/verw.png?raw=true)
+
 
 Man kann OVMS zudem mitteilen, nicht alle Daten zu senden. Dazu lest euch bitte hier ein :https://github.com/openvehicles/Open-Vehicle-Monitoring-System-3/blob/master/docs/source/userguide/components.rst
 

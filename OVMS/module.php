@@ -69,6 +69,7 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 				['6', $this->Translate('supercharger'),  '', 0x00FF00],
 				['7', $this->Translate('ccs'),  '', 0x00FF00]
 			], 0, 0);
+
 	}
 
 		public function Destroy()
@@ -99,8 +100,34 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 				$MQTTTopic = $DefaultTopic;
 			} 
 	
+			if (isset($UserName))
+			{
+				$this->UpdateFormField("RequestData", "enabled", true);
+				$this->UpdateFormField("RequestDataLabel", "visible", false);	
+			}
+
 			//Setze Filter für ReceiveData
 			$this->SetReceiveDataFilter('.*' . $MQTTTopic . '.*');
+		}
+
+		public function GetConfigurationForm()
+		{
+			$jsonForm = json_decode(file_get_contents(__DIR__ . "/form.json"), true);
+
+			$UserName = $this->ReadPropertyString('UserName');
+			if (!empty($UserName))
+			{
+				$jsonForm["actions"][0]["enabled"] = true; // if Username ist not empty, show Reloadbutton	
+				$jsonForm["actions"][1]["visible"] = false;
+			} 
+			else
+			{
+				$jsonForm["actions"][0]["enabled"] = false; // if Username ist not empty, show Reloadbutton		
+				$jsonForm["actions"][1]["visible"] = true;
+		
+			} 
+			
+			return json_encode($jsonForm);
 		}
 
 		public function ReceiveData($JSONString)
@@ -113,6 +140,19 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			}							
 			
 		}
+
+		protected function sendMQTT($Topic, $Payload)
+		{
+			$mqtt['DataID'] = '{043EA491-0325-4ADD-8FC2-A30C8EEB4D3F}';
+			$mqtt['PacketType'] = 3;
+			$mqtt['QualityOfService'] = 0;
+			$mqtt['Retain'] = false;
+			$mqtt['Topic'] = $Topic;
+			$mqtt['Payload'] = $Payload;
+			$mqttJSON = json_encode($mqtt, JSON_UNESCAPED_SLASHES);
+			$mqttJSON = json_encode($mqtt);
+			$result = $this->SendDataToParent($mqttJSON);
+		}		
 
 		private function CheckDB($data)
 		{
@@ -251,6 +291,14 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 					}				
 				}
 
+				// if we receive the responseAnswer, set button to green
+				if (strstr($IdentName, '_response_RequestReloadData'))
+				{ 
+					$this->LogMessage($this->Translate('RequestReloadData(): the OVMS Module received our request.'),KL_MESSAGE);
+					$this->SendDebug("RequestReloadData()","receive Answer: ".$IdentName, 0);
+
+				}
+
 				//write data if values are in DB or user want to write all data
 				if (($this->ReadPropertyBoolean('WriteNotinDB')) OR ($DBFound === "yes"))
 				{
@@ -274,5 +322,33 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			}
 			return $NewPayload;
 		}
-        
+
+		public function requestReloadData()
+		{
+			$Payload="server v3 update all";
+			$UserName = $this->ReadPropertyString('UserName');
+
+			if (empty($UserName))
+			{
+				$this->LogMessage($this->Translate('RequestReloadData(): to use this function, you need to type in a username'),KL_ERROR);
+				exit(1);
+			}
+
+			$GenTopic = $this->ReadAttributeString("MQTTTopic");
+			$Topic = $GenTopic.'client/'.$UserName.'/command/RequestReloadData';
+
+			$this->SendDebug(__FUNCTION__,"send topic: ".$Topic, 0);
+			$this->LogMessage($this->Translate('RequestReloadData(): send Payload '),KL_MESSAGE);
+
+			$this->sendMQTT($Topic, $Payload);	
+		}
+
+		public function RequestAction($Ident, $Value = NULL)
+		{
+			switch ($Ident) {
+				case 'requestReloadData':
+					$this->requestReloadData();
+				break;
+			}
+	}		
 }

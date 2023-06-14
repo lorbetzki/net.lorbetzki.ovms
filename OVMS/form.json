@@ -20,7 +20,7 @@
         { 
             "type": "ValidationTextBox", 
             "name": "UserName", 
-            "caption": "Username" 
+            "caption": "Username"
         },
         { 
             "type": "Label",
@@ -38,6 +38,19 @@
         }
     ],
     "actions": [
+        {
+            "type": "Button",
+            "caption": "Request Data",
+            "name": "RequestData",
+            "onClick":	"IPS_RequestAction($id, 'requestReloadData', '');",
+            "enabled": false
+        },
+        {
+            "type": "Label",
+            "name": "RequestDataLabel",
+            "caption": "to activate the Button, you need to type in the user name.",
+            "visible": true
+        }
      ],
     "status": [
        
