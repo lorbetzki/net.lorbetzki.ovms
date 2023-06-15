@@ -18,6 +18,7 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 
 			$this->RegisterPropertyString('TopicPrefix', '');
 			$this->RegisterAttributeString("MQTTTopic", "");
+			$this->RegisterAttributeString('lastPayload', "");
 
 			$this->RegisterPropertyBoolean('WriteNotinDB', 'false');
 
@@ -301,8 +302,9 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 
 				if (strstr($IdentName, $RecAck))
 				{
-					$this->LogMessage($this->Translate('Receive answer: the OVMS Module received our request.'),KL_MESSAGE);
-					$this->SendDebug("Receive answer:","from IDENT ".$IdentName, 0);
+					$lastPayload=$this->ReadAttributeString('lastPayload');
+					$this->LogMessage($this->Translate('the OVMS Hardware received our request with the Payload: ').$lastPayload,KL_MESSAGE);
+					$this->SendDebug("Receive answer:","from IDENT ".$IdentName." with Payload: ".$lastPayload, 0);
 				}
 				
 				//write data if values are in DB or user want to write all data
@@ -357,7 +359,7 @@ require_once __DIR__ . '/../libs/VariableProfileHelper.php';
 			$Topic = $deviceTopic.'client/'.$UserName.'/command/'.$cmdstring;
 			$this->SendDebug(__FUNCTION__,"send topic: ".$Topic." and Payload ".$Payload, 0);
 			$this->LogMessage($this->Translate('sendCmd(): send Payload').' "'.$Payload.'"',KL_MESSAGE);
-
+			$this->WriteAttributeString('lastPayload', "$Payload");
 			$this->sendMQTT($Topic, $Payload);	
 		}
 

@@ -230,7 +230,7 @@
                 "Request Data": "Daten anfordern",
                 "sendCmd(): to use this function, you need to type in a username":"sendCmd(): um die Funktion nutzen zu können, tragen Sie bitte einen Benutzernamen ein",
                 "sendCmd(): send Payload":"sendCmd(): sende Payload",
-                "Receive answer: the OVMS Module received our request.": "erhalte Antwort: das OVMS Modul hat unsere Anfrage erhalten."
+                "the OVMS Hardware received our request with the Payload: ": "die OVMS Hardware hat unsere Anfrage erhalten, das Payload lautete: "
 
         }
     }
