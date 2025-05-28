@@ -117,7 +117,7 @@ $DP = array(
     array('metric/v/e/c/config','ECU/controller in configuration state', 'BOOL', 'OVMS_yesno'),
     array('metric/v/e/c/login','Module logged in at ECU/controller', 'BOOL', 'OVMS_yesno'),
     array('metric/v/e/cabintemp','Cabin temperature', 'FLOAT', '~Temperature'),
-    array('metric/v/e/cabinfan','Cabin fan', '', 'FLOAT'),
+    array('metric/v/e/cabinfan','Cabin fan', 'FLOAT', ''),
     array('metric/v/e/cabinsetpoint','Cabin set point', 'FLOAT', '~Temperature'),
     array('metric/v/e/cabinintake','Cabin intake type (fresh, recirc, etc)', 'STRING', ''),
     array('metric/v/e/cabinvent','Cabin vent type (comma-separated list of feet, face, screen, etc)', 'STRING', ''),
